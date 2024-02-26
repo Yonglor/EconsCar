@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이컨이의 차</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script src="script.js"></script>
+    <h1 class="maintext">이컨이의 차</h1>
+    <h1>made by 용러</h1>
+    <h1 class="aboveimg">아이 워너 purchase 우루스</h1>
+    <img class="imgs" src="이컨이.png">
+    <div class="showmo">
+        <h1>돈 : <span id="id2">0</span></h1>
+        
+        
+    </div>
+    
+<script>
+    // script.js
+            var money = 0
+
+var var2 = document.getElementById("id2");
+
+function getmoney() {
+    money += 100;
+
+    var2.innerHTML = money;
+}
+    </script>
+        <img id="cari" class="momig" src="none123.png">
+        <div class="move">
+            <button class="newbu" onclick="dangun()">당근</button>
+            <p></p>
+            <button class="newbu" onclick="getmoney()">노가다</button>
+            <p></p>
+            <button class="newbu" onclick="buycartap()">차 구매</button>
+            <p></p>
+            <button class="newbu">상점</button>
+        </div>
+
+        <!--차 사기 탭-->
+    <script>
+        var damass = 0
+        function buycartap() {
+            // 그 뭐냐 그 새 탭여는거
+            const buytap = window.open("", "_blank");
+
+            const h1h1 = buytap.document.createElement("h1");
+            h1h1.textContent = "이 페이지를 끄지 말아주세요!"
+            h1h1.classList.add("font");
+            buytap.document.body.appendChild(h1h1);
+
+            const stylejs = buytap.document.createElement("style");
+            stylejs.textContent = `.font {
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+            } .but11 {
+                border-radius: 10px;
+    font-family: "Jua", sans-serif;
+    background: rgba(255, 255, 255 .5);
+    box-shadow: 1px 5px 50px black;
+            } .qweqwe {
+                border-radius: 10px;
+            }`;
+buytap.document.head.appendChild(stylejs);
+            // 그 뭐냐 다마스 사진
+            const damasimg = buytap.document.createElement("img");
+            damasimg.id = "damasi";
+            damasimg.alt = "damas";
+            damasimg.src = "damas.png";
+
+            buytap.document.title = "차 사기";
+
+            const damasbu = buytap.document.createElement("button");
+            damasbu.textContent = "다마스 사기";
+            damasbu.classList.add("but11");
+            damasbu.onclick = function () {
+                if (money >= 3000000) {
+                money -= 3000000;
+                document.getElementById("cari").src = "damas.png";
+                damass += 1
+
+                document.getElementById("id2").textContent =  money;
+
+                damasbu.disabled = true;
+                damasbu.textContent = "품절";
+            } else {
+            alert ("돈이 부족하다")
+            } }
+            buytap.document.body.appendChild(damasbu);
+            buytap.document.body.appendChild(damasimg);
+        }
+
+    </script>
+<!--당근마켓-->
+<script>
+    function dangun() {
+        // 당근 탭 열기
+        const dangtap = window.open("", "_blank");
+
+        dangtap.document.title = "당근마켓";
+        // 다마스 사진
+        const damasimg1 = dangtap.document.createElement("img");
+            damasimg1.id = "damasi";
+            damasimg1.alt = "damas";
+            damasimg1.src = "damas.png";
+
+
+            const damassold = dangtap.document.createElement("button");
+            damassold.textContent = "다마스 팔기";
+            damassold.onclick = function () {
+               if (damass >= 1) {
+                damass -= 1
+                document.getElementById("cari").src = "none123.png";
+                money += 2000000
+
+                document.getElementById("id2").textContent =  money;
+               } else {
+                alert("다마스가 없어요")
+               }
+
+                }
+            dangtap.document.body.appendChild(damassold);
+            dangtap.document.body.appendChild(damasimg1);
+    } //SAyodevice
+    // w
+</script>
+
+</body>
+</html>

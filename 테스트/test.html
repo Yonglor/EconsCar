@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money and Image Change</title>
+</head>
+<body>
+
+<!-- 초기 money 값 -->
+<p id="moneyDisplay">Money: 100000</p>
+
+<!-- 초기 이미지 -->
+<img id="imageDisplay" src="ha.png" alt="Initial Image">
+
+<!-- 열기 버튼 -->
+<button onclick="openNewTab()">열기</button>
+
+<script>
+    // 초기 money 값
+    let money = 100000;
+
+    // 열기 버튼 클릭 시 호출되는 함수
+    function openNewTab() {
+        // 새 탭 열기
+        const newTab = window.open("", "_blank");
+
+        // 이미지 엘리먼트 생성
+        const carImage = document.createElement("img");
+        carImage.id = "imageDisplay";
+        carImage.alt = "Car Image";
+        carImage.src = "ha.png";
+
+        // 차 사기 버튼 생성
+        const buyCarButton = document.createElement("button");
+        buyCarButton.textContent = "차 사기";
+        buyCarButton.onclick = function () {
+            // money 10000 줄이기
+            money -= 10000;
+
+            // 이전 탭의 이미지 변경
+            document.getElementById("imageDisplay").src = "he.png";
+
+            // 새 탭의 money 값 갱신
+            newTab.document.getElementById("moneyDisplay").textContent = "Money: " + money;
+
+            // 새 탭의 이미지 변경
+            newTab.document.getElementById("imageDisplay").src = "he.png";
+        };
+
+        // 새 탭에 이미지와 버튼 추가
+        newTab.document.body.appendChild(carImage);
+        newTab.document.body.appendChild(buyCarButton);
+
+        // 부모 창에 직접 접근하여 함수 전달
+        newTab.buyCar = function () {
+            // money 10000 줄이기
+            money -= 10000;
+
+            // 부모 창의 이미지 변경
+            document.getElementById("imageDisplay").src = "he.png";
+
+            // 부모 창의 money 값 갱신
+            document.getElementById("moneyDisplay").textContent = "Money: " + money;
+        };
+    }
+</script>
+
+</body>
+</html>
